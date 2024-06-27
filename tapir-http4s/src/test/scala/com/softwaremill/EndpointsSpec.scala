@@ -2,15 +2,17 @@ package com.softwaremill
 
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
-import com.softwaremill.endpoints.HelloWorldEndpoints.{*, given}
+import com.softwaremill.endpoints.HelloWorldEndpoints.*
+import com.softwaremill.endpoints.HelloWorldEndpoints.given
 import com.softwaremill.endpoints.Library.*
 import io.circe.generic.auto.*
 import org.scalatest.EitherValues
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+import sttp.client3.UriContext
+import sttp.client3.basicRequest
 import sttp.client3.circe.*
 import sttp.client3.testing.SttpBackendStub
-import sttp.client3.{UriContext, basicRequest}
 import sttp.tapir.integ.cats.effect.CatsMonadError
 import sttp.tapir.server.stub.TapirStubInterpreter
 

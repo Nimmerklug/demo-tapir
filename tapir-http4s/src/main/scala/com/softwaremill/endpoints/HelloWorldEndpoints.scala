@@ -1,9 +1,9 @@
 package com.softwaremill.endpoints
 
-import sttp.tapir.*
 import Library.*
 import cats.effect.IO
 import io.circe.generic.auto.*
+import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 import sttp.tapir.server.ServerEndpoint
@@ -14,13 +14,13 @@ object HelloWorldEndpoints:
     .in("hello")
     .in(query[User]("name"))
     .out(stringBody)
-  val helloServerEndpoint: ServerEndpoint[Any, IO] = helloEndpoint.serverLogicSuccess(user => IO.pure(s"Hello ${user.name}"))
+  val helloServerEndpoint: ServerEndpoint[Any, IO]           =
+    helloEndpoint.serverLogicSuccess(user => IO.pure(s"Hello ${user.name}"))
 
   val booksListing: PublicEndpoint[Unit, Unit, List[Book], Any] = endpoint.get
     .in("books" / "list" / "all")
     .out(jsonBody[List[Book]])
-  val booksListingServerEndpoint: ServerEndpoint[Any, IO] = booksListing.serverLogicSuccess(_ => IO.pure(Library.books))
-
+  val booksListingServerEndpoint: ServerEndpoint[Any, IO]       = booksListing.serverLogicSuccess(_ => IO.pure(Library.books))
 
 object Library:
   case class Author(name: String)

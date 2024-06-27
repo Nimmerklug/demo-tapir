@@ -9,7 +9,7 @@ object SwaggerEndpoint:
 
   val apiEndpoints: List[ServerEndpoint[Any, IO]] = List(
     HelloWorldEndpoints.helloServerEndpoint,
-    HelloWorldEndpoints.booksListingServerEndpoint,
+    HelloWorldEndpoints.booksListingServerEndpoint
   ) ++ AnimalEndpoints.serverEndpoints
 
   val docEndpoints: List[ServerEndpoint[Any, IO]] = SwaggerInterpreter()

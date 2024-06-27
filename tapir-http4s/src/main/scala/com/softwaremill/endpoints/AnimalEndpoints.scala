@@ -115,12 +115,12 @@ object AnimalEndpoints:
   })
 
   val serverEndpoints: List[ServerEndpoint[Any, IO]] = List(
-        kittensListingServerEndpoint.tag(apiTag),
-        kittensGetServerEndpoint.tag(apiTag),
-        kittensPostServerEndpoint.tag(apiTag),
-        kittensPutServerEndpoint.tag(apiTag),
-        kittensDeleteServerEndpoint.tag(apiTag)
-      )
+    kittensListingServerEndpoint.tag(apiTag),
+    kittensGetServerEndpoint.tag(apiTag),
+    kittensPostServerEndpoint.tag(apiTag),
+    kittensPutServerEndpoint.tag(apiTag),
+    kittensDeleteServerEndpoint.tag(apiTag)
+  )
 
 object Database:
   case class Kitten(id: Long, name: String, gender: String, ageInDays: Int)
